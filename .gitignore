@@ -19,3 +19,6 @@
 /server/HhVacancyViewer/HhVacancyViewer.WebApi/obj
 /server/HhVacancyViewer/HhVacancyViewer.WebApi/HhVacancyViewer.WebApi.csproj.user
 /server/HhVacancyViewer/packages/Newtonsoft.Json.10.0.3
+/.vs
+/server/HhVacancyViewer/Core/HhVacancyViewer.Core.HhApi.Models/bin/Debug/netcoreapp2.0
+/server/HhVacancyViewer/Core/HhVacancyViewer.Core.HhApi.Models/obj

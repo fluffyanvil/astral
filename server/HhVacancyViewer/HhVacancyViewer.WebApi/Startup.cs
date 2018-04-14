@@ -35,6 +35,8 @@ namespace HhVacancyViewer.WebApi
             services.AddDbContext<HeadHunterDbContext>(builder => builder.UseNpgsql(connectionString));
 
             services.AddSingleton<IHeadHunterApi>(new HeadHunterApi());
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
