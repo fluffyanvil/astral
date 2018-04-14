@@ -1,7 +1,10 @@
 ﻿using HhVacancyViewer.Core.ApiInterop;
 using HhVacancyViewer.Core.Pg;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,6 +39,18 @@ namespace HhVacancyViewer.WebApi
 
             services.AddSingleton<IHeadHunterApi>(new HeadHunterApi());
 
+            var corsBuilder = new CorsPolicyBuilder();
+            corsBuilder.AllowAnyHeader();
+            corsBuilder.AllowAnyMethod();
+            corsBuilder.AllowAnyOrigin(); // For anyone access.
+            //corsBuilder.WithOrigins("http://localhost:56573"); // for a specific url. Don't add a forward slash on the end!
+            corsBuilder.AllowCredentials();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("SiteCorsPolicy", corsBuilder.Build());
+            });
+
             services.AddCors();
         }
 
@@ -54,6 +69,8 @@ namespace HhVacancyViewer.WebApi
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{ApiTitle} V1");
                 c.RoutePrefix = "api-docs";
             });
+            app.UseCors(builder =>
+                builder.WithOrigins("/").AllowAnyHeader());
         }
     }
 }

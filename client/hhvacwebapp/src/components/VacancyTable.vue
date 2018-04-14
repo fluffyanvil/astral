@@ -1,155 +1,135 @@
 <template>
-  <v-data-table :headers="headers" :items="items" hide-actions class="elevation-1">
-    <template slot="items" slot-scope="props">
-          <td>{{ props.item.name }}</td>
-          <td class="text-xs-right">{{ props.item.calories }}</td>
-          <td class="text-xs-right">{{ props.item.fat }}</td>
-          <td class="text-xs-right">{{ props.item.carbs }}</td>
-          <td class="text-xs-right">{{ props.item.protein }}</td>
-          <td class="text-xs-right">{{ props.item.iron }}</td>
-          <td class="text-xs-right">
-            <v-switch color="teal" v-model=props.item.isFavourite></v-switch>
-          </td>
+  <v-card>
+    <v-card-title>
+      <v-spacer></v-spacer>
+      <v-text-field
+        append-icon="search"
+        label="Поиск"
+        single-line
+        hide-details
+        v-model="search"
+      ></v-text-field>
+    </v-card-title>
+    <v-data-table :headers="headers" :loading="this.isBusy" :items="items" hide-actions class="elevation-1" :search="search" no-data-text="Нет данных">
+      <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
+      <template slot="items" slot-scope="props">
+        <tr @click="props.expanded = !props.expanded">
+            <td>{{ props.item.title }}</td>
+            <td class="text-xs-right">{{ props.item.salaryFrom }}</td>
+            <td class="text-xs-right">{{ props.item.salaryTo }}</td>
+            <td class="text-xs-right">{{ props.item.organization }}</td>
+            <td class="text-xs-right">{{ props.item.organizationUrl }}</td>
+            <td class="text-xs-right">{{ props.item.contactPerson }}</td>
+            <td class="text-xs-right">{{ props.item.contactPhone }}</td>
+            <td class="text-xs-right">{{ props.item.contactEmail }}</td>
+            <td class="text-xs-right">
+              <v-switch color="blue" v-model=props.item.isFavourite @click.stop="changeIsFavourite(props.item)"></v-switch>
+            </td>
+        </tr>
       </template>
-  </v-data-table>
+      <v-alert slot="no-results" :value="true" color="error" icon="warning">
+        По запросу "{{ search }}" ничего не найдено.
+      </v-alert>
+      <template slot="expand" slot-scope="props">
+        <v-card flat>
+          <v-card-text>{{props.item.description}}</v-card-text>
+        </v-card>
+      </template>
+    </v-data-table>
+  </v-card>
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
+    methods: {
+      load: function() {
+          this.isBusy = true;
+          axios
+            .get('http://localhost:57571/api/Vacancies')
+            .then(({data}) => {
+                this.items = data;
+                this.isBusy = false;
+            })
+            .catch((err) => {
+                console.log(err);
+                this.isBusy = true;
+            });
+      },
+      update: function(item){
+          this.isBusy = true;
+          axios
+            .get('http://localhost:57571/api/Vacancies/' + item.id)
+            .then(({data}) => {
+                this.isBusy = false;
+                item.isFavourite = data.isFavourite;
+            })
+            .catch((err) => {
+                console.log(err);
+                this.isBusy = true;
+            });
+      },
+      changeIsFavourite: function(item){
+          this.isBusy = true;
+          axios
+            .post('http://localhost:57571/api/Vacancies', item)
+            .then(({data}) => {
+                this.isBusy = false;
+                this.update(item);
+            })
+            .catch((err) => {
+                console.log(err);
+                this.isBusy = true;
+            });
+      }
+    },
+    mounted: function() {
+      this.load();
+    },
     data() {
       return {
+        search: '',
+        isBusy: false,
         headers: [{
-            text: 'Dessert (100g serving)',
+            text: 'Название',
             align: 'left',
             sortable: false,
-            value: 'name'
+            value: 'title'
           },
           {
-            text: 'Calories',
-            value: 'calories'
+            text: 'Зарплата от',
+            value: 'salaryFrom'
           },
           {
-            text: 'Fat (g)',
-            value: 'fat'
+            text: 'Зарплата до',
+            value: 'salaryTo'
           },
           {
-            text: 'Carbs (g)',
-            value: 'carbs'
+            text: 'Работодатель',
+            value: 'organization'
           },
           {
-            text: 'Protein (g)',
-            value: 'protein'
+            text: 'Url',
+            value: 'organizationUrl'
           },
           {
-            text: 'Iron (%)',
-            value: 'iron'
+            text: 'Контактное лицо',
+            value: 'contactPerson'
+          },
+          {
+            text: 'Телефон',
+            value: 'contactPhone'
+          },
+          {
+            text: 'Email',
+            value: 'contactEmail'
           },
           {
             text: 'Избранное',
             value: 'isFavourite'
           }
         ],
-        items: [{
-            value: false,
-            name: 'Frozen Yogurt',
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-            iron: '1%',
-            isFavourite: false
-          },
-          {
-            value: false,
-            name: 'Ice cream sandwich',
-            calories: 237,
-            fat: 9.0,
-            carbs: 37,
-            protein: 4.3,
-            iron: '1%',
-            isFavourite: true
-          },
-          {
-            value: false,
-            name: 'Eclair',
-            calories: 262,
-            fat: 16.0,
-            carbs: 23,
-            protein: 6.0,
-            iron: '7%',
-            isFavourite: true
-          },
-          {
-            value: false,
-            name: 'Cupcake',
-            calories: 305,
-            fat: 3.7,
-            carbs: 67,
-            protein: 4.3,
-            iron: '8%',
-            isFavourite: false
-          },
-          {
-            value: false,
-            name: 'Gingerbread',
-            calories: 356,
-            fat: 16.0,
-            carbs: 49,
-            protein: 3.9,
-            iron: '16%',
-            isFavourite: true
-          },
-          {
-            value: false,
-            name: 'Jelly bean',
-            calories: 375,
-            fat: 0.0,
-            carbs: 94,
-            protein: 0.0,
-            iron: '0%',
-            isFavourite: false
-          },
-          {
-            value: false,
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-            iron: '2%',
-            isFavourite: false
-          },
-          {
-            value: false,
-            name: 'Honeycomb',
-            calories: 408,
-            fat: 3.2,
-            carbs: 87,
-            protein: 6.5,
-            iron: '45%',
-            isFavourite: false
-          },
-          {
-            value: false,
-            name: 'Donut',
-            calories: 452,
-            fat: 25.0,
-            carbs: 51,
-            protein: 4.9,
-            iron: '22%',
-            isFavourite: false
-          },
-          {
-            value: false,
-            name: 'KitKat',
-            calories: 518,
-            fat: 26.0,
-            carbs: 65,
-            protein: 7,
-            iron: '6%',
-            isFavourite: false
-          }
-        ]
+        items: [ ]
       }
     }
   }

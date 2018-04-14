@@ -7,6 +7,7 @@ using HhVacancyViewer.Core.ApiInterop;
 using HhVacancyViewer.Core.Pg;
 using HhVacancyViewer.WebApi.Helpers;
 using HhVacancyViewer.WebApi.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ namespace HhVacancyViewer.WebApi.Controllers
 {
     [Produces("application/json")]
     [Route("api/Vacancies")]
+    [EnableCors("SiteCorsPolicy")]
     public class VacanciesController : Controller
     {
         private HeadHunterDbContext _context;
