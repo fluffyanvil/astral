@@ -46,7 +46,7 @@
       load: function() {
           this.isBusy = true;
           axios
-            .get('http://localhost:57571/api/Vacancies')
+            .get('http://hhvacancyviewerwebapi20180414080703.azurewebsites.net/api/Vacancies')
             .then(({data}) => {
                 this.items = data;
                 this.isBusy = false;
@@ -59,7 +59,7 @@
       update: function(item){
           this.isBusy = true;
           axios
-            .get('http://localhost:57571/api/Vacancies/' + item.id)
+            .get('http://hhvacancyviewerwebapi20180414080703.azurewebsites.net/api/Vacancies/' + item.id)
             .then(({data}) => {
                 this.isBusy = false;
                 item.isFavourite = data.isFavourite;
@@ -72,7 +72,7 @@
       changeIsFavourite: function(item){
           this.isBusy = true;
           axios
-            .post('http://localhost:57571/api/Vacancies', item)
+            .post('http://hhvacancyviewerwebapi20180414080703.azurewebsites.net/api/Vacancies', item)
             .then(({data}) => {
                 this.isBusy = false;
                 this.update(item);
