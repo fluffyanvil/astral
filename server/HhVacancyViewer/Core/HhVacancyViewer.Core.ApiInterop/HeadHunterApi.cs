@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using HhVacancyViewer.Core.HhApi.Common.Models;
+using HhVacancyViewer.Core.HhApi.Models.Models;
 using HhVacancyViewer.Core.HhApi.Requests;
 using HhVacancyViewer.Core.HhApi.Requests.Parameters;
 using HhVacancyViewer.Core.HhApi.Requests.Requests;

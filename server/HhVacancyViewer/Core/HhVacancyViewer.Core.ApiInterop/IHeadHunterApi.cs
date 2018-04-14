@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using HhVacancyViewer.Core.HhApi.Common.Models;
+using HhVacancyViewer.Core.HhApi.Models.Models;
 
 namespace HhVacancyViewer.Core.ApiInterop
 {

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HhVacancyViewer.Core.HhApi.Common\HhVacancyViewer.Core.HhApi.Common.csproj" />
+    <ProjectReference Include="..\HhVacancyViewer.Core.HhApi.Models\HhVacancyViewer.Core.HhApi.Models.csproj" />
     <ProjectReference Include="..\HhVacancyViewer.Core.HhApi.Requests\HhVacancyViewer.Core.HhApi.Requests.csproj" />
   </ItemGroup>
 

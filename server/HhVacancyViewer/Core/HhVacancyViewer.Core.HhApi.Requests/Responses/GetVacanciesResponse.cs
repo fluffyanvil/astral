@@ -1,4 +1,4 @@
-﻿using HhVacancyViewer.Core.HhApi.Common.Models;
+﻿using HhVacancyViewer.Core.HhApi.Models.Models;
 using Newtonsoft.Json;
 
 namespace HhVacancyViewer.Core.HhApi.Requests.Responses

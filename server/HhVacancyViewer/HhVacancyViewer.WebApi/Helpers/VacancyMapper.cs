@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using HhVacancyViewer.Core.HhApi.Common.Models;
+using HhVacancyViewer.Core.HhApi.Models.Models;
 using HhVacancyViewer.Core.Pg;
 using HhVacancyViewer.WebApi.Models;
 

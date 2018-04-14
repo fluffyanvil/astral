@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HhVacancyViewer.Core.HhApi.Common\HhVacancyViewer.Core.HhApi.Common.csproj" />
+    <ProjectReference Include="..\HhVacancyViewer.Core.HhApi.Models\HhVacancyViewer.Core.HhApi.Models.csproj" />
   </ItemGroup>
 
 </Project>
