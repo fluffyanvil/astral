@@ -3,3 +3,19 @@
 ################################################################################
 
 /server/HhVacancyViewer/.vs
+/server/HhVacancyViewer/Core/HhVacancyViewer.Core.ApiInterop/bin/Debug/netcoreapp2.0
+/server/HhVacancyViewer/Core/HhVacancyViewer.Core.ApiInterop/obj
+/server/HhVacancyViewer/Core/HhVacancyViewer.Core.HhApi.Common/bin/Debug
+/server/HhVacancyViewer/Core/HhVacancyViewer.Core.HhApi.Common/obj/Debug
+/server/HhVacancyViewer/Core/HhVacancyViewer.Core.HhApi.Requests/bin/Debug/netcoreapp2.0
+/server/HhVacancyViewer/Core/HhVacancyViewer.Core.HhApi.Requests/obj
+/server/HhVacancyViewer/Core/HhVacancyViewer.Core.Pg/bin/Debug/netcoreapp2.0
+/server/HhVacancyViewer/Core/HhVacancyViewer.Core.Pg/obj
+/server/HhVacancyViewer/HhVacancyViewer/bin/Debug/netcoreapp2.0
+/server/HhVacancyViewer/HhVacancyViewer/obj
+/server/HhVacancyViewer/HhVacancyViewer.TestConsole/bin/Debug/netcoreapp2.0
+/server/HhVacancyViewer/HhVacancyViewer.TestConsole/obj
+/server/HhVacancyViewer/HhVacancyViewer.WebApi/bin/Debug/netcoreapp2.0
+/server/HhVacancyViewer/HhVacancyViewer.WebApi/obj
+/server/HhVacancyViewer/HhVacancyViewer.WebApi/HhVacancyViewer.WebApi.csproj.user
+/server/HhVacancyViewer/packages/Newtonsoft.Json.10.0.3

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HhVacancyViewer.Core.HhApi.Common\HhVacancyViewer.Core.HhApi.Common.csproj" />
+    <ProjectReference Include="..\HhVacancyViewer.Core.HhApi.Requests\HhVacancyViewer.Core.HhApi.Requests.csproj" />
+  </ItemGroup>
+
+</Project>
