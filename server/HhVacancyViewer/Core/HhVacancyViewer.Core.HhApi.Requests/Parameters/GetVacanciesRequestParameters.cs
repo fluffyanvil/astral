@@ -25,7 +25,7 @@ namespace HhVacancyViewer.Core.HhApi.Requests.Parameters
         public static GetVacanciesRequestParameters Build()
         {
             return new GetVacanciesRequestParameters(
-                (int)Specializations.ItInternetTelecom, (int)Areas.KalugaStateRegion, true, 100);
+                (int)Specializations.ItInternetTelecom, (int)Areas.KalugaStateRegion, true, 50);
         }
         public override Dictionary<string, string> Parameters => 
             new Dictionary<string, string>
