@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HhVacancyViewer.Core.HhApi.Dictionaries\HhVacancyViewer.Core.HhApi.Dictionaries.csproj" />
     <ProjectReference Include="..\HhVacancyViewer.Core.HhApi.Models\HhVacancyViewer.Core.HhApi.Models.csproj" />
   </ItemGroup>
 

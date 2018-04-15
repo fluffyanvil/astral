@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using HhVacancyViewer.Core.HhApi.Dictionaries;
 
 namespace HhVacancyViewer.Core.HhApi.Requests.Parameters
 {
@@ -22,13 +24,14 @@ namespace HhVacancyViewer.Core.HhApi.Requests.Parameters
 
         public static GetVacanciesRequestParameters Build()
         {
-            return new GetVacanciesRequestParameters(1, 1859, true, 50);
+            return new GetVacanciesRequestParameters(
+                (int)Specializations.ItInternetTelecom, (int)Areas.KalugaStateRegion, true, 100);
         }
         public override Dictionary<string, string> Parameters => 
             new Dictionary<string, string>
                 {
-                    {"specialization", Specialization.ToString() },
-                    {"area", Area.ToString() },
+                    { "specialization", Specialization.ToString() },
+                    { "area", Area.ToString() },
                     { "only_with_salary", OnlyWithSalary.ToString().ToLower()},
                     { "per_page", PerPage.ToString()}
                 };
